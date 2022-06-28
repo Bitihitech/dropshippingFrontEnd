@@ -1,0 +1,213 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-3 mt-5">
+      <div class="mb-3 mt-5" >
+        <h1 class="text-center" style=""></h1>
+      </div>
+      <div class="col-12 d-flex justify-content-around">
+        <div class="mb-3 mt-5">
+          <div>
+            <label class="label ">Upload sản phẩm <span class="text-danger">(*)</span>:</label>
+            <br>
+            <br>
+          </div>
+          <div *ngIf="checkImgIn != true">
+            <i class="fa-solid fa-champagne-glasses" style='font-size:150px'></i>
+          </div>
+          <div>
+            <img *ngIf="checkImgIn == true" style="width: 200px;height: 200px" alt="avatar" id="imageNews" [src]="imageThis">
+            <br><span *ngIf="loadImg" class="spinner-border" ></span>
+            <input value="a" style=" border: none; padding: 10px; border-radius: 3px" type="file" multiple = "multiple"
+                   class="form-control-file" (change)=" showPreview($event)">
+          </div>
+
+          <div>
+            <button class="coler"  style=" border: none; background: #71b7e6; color: white;padding: 10px; border-radius: 3px" type="button" (click)="updateImage()">Upload</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-9 order-md-1">
+      <div class="mb-3 mt-5" style="height:50px">
+          <h1 class="text-center" style=" padding-top: 12px;">Thêm Mới Sản Phẩm</h1>
+      </div>
+      <form [formGroup]="formValue" (ngSubmit)="save()">
+        <div class="container">
+<!--          <div class="col-12 d-flex justify-content-around">-->
+<!--            <div class="col-5 mb-3">-->
+<!--              <div>-->
+<!--                <label class="label mt-5">Upload sản phẩm <span class="text-danger">(*)</span>:</label>-->
+<!--                <br>-->
+<!--                <br>-->
+<!--              </div>-->
+<!--              <div *ngIf="checkImgIn != true">-->
+<!--                <i class="fa-solid fa-champagne-glasses" style='font-size:150px'></i>-->
+<!--              </div>-->
+<!--              <div>-->
+<!--                <img *ngIf="checkImgIn == true" style="width: 200px;height: 200px" alt="avatar" id="imageNews"-->
+<!--                     [src]="imageThis">-->
+<!--                <br><span *ngIf="loadImg" class="spinner-border" ></span>-->
+<!--                <input value="a" style=" border: none; padding: 10px; border-radius: 3px" type="file"-->
+<!--                       class="form-control-file" (change)=" showPreview($event)">-->
+<!--              </div>-->
+
+<!--              <div>-->
+<!--                <button class="coler"  style=" border: none; background: #71b7e6; color: white;padding: 10px; border-radius: 3px" type="button" (click)="updateImage()">Upload</button>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--            <div class="col-5 mb-3">-->
+<!--            </div>-->
+<!--          </div>-->
+
+          <div class="col-12 mt-5 d-flex justify-content-around">
+            <div class="col-5 mb-3">
+              <div class="mb-3">
+                <label class="label">Tên sản phẩm <span class="text-danger">(*)</span>:</label>
+                <br>
+                <br>
+                <div class="input-group">
+                  <input type="text" class="form-control" placeholder="Tên sản phẩm" formControlName="name">
+                </div>
+              </div>
+            </div>
+            <div class="col-5 mb-3">
+              <div class="mb-3">
+                <label>Trạng thái <span class="text-danger">(*)</span>:</label>
+                <br>
+                <br>
+                <div class="input-group">
+                  <input type="text" class="form-control" placeholder="Trạng thái" formControlName="status">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-12  d-flex justify-content-around">
+            <div class="col-5 mb-3 ">
+              <div class="mb-3">
+                <label>Địa điểm <span class="text-danger">(*)</span>:</label>
+                <br>
+                <br>
+                <div class="input-group">
+                  <input type="text" class="form-control" placeholder="Địa điểm" formControlName="location">
+                </div>
+              </div>
+            </div>
+            <div class="col-5 mb-3">
+              <div class="mb-3">
+                <label>Thông báo <span class="text-danger">(*)</span>:</label>
+                <br>
+                <br>
+                <div class="input-group">
+                  <input type="text" class="form-control" placeholder="Thông báo" formControlName="notice">
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="col-12 d-flex justify-content-around">
+            <div class="col-5 mb-3">
+              <div class="mb-3">
+                <label>Điều kiện <span class="text-danger">(*)</span>:</label>
+                <br>
+                <br>
+                <div class="input-group">
+                  <input type="text" class="form-control" placeholder="Điều kiện" formControlName="condition">
+                </div>
+              </div>
+            </div>
+            <div class="col-5 mb-3">
+              <div class="mb-3">
+                <label>Mô tả <span class="text-danger">(*)</span>:</label>
+                <br>
+                <br>
+                <div class="input-group">
+              <textarea class="form-control" id="titleNews" rows="3"
+                        placeholder="Mô tả:" formControlName="description"></textarea>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 d-flex justify-content-around">
+            <div class="col-5 mb-3">
+              <div class="col mb-3">
+                <label>Thư mục <span class="text-danger">(*)</span>:</label>
+                <br>
+                <br>
+                <select class="form-control" name="categoryId" formControlName="categoryId" required="">
+                  <option value="" selected>Chọn thư mục</option>
+                  <option [ngValue]="listCategory.id"
+                          *ngFor="let listCategory of listCategory">{{listCategory.name}}</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-5 mb-3">
+              <div class="col mb-3">
+                <label>Quốc gia <span class="text-danger">(*)</span>:</label>
+                <br>
+                <br>
+                <select class="form-control" name="cityId" required="" (change)="getProvinceById($event.target)">
+                  <option value="" selected>Chọn quốc gia</option>
+                  <option value="{{listNationality.id}}"
+                          *ngFor="let listNationality of listNationality">{{listNationality.name}}</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 d-flex justify-content-around">
+            <div class="col-5 mb-3">
+              <div class="col mb-3">
+                <label>Tỉnh <span class="text-danger">(*)</span>:</label>
+                <br>
+                <br>
+                <select *ngIf="loadingGetProvince" disabled class="form-control" name="cityId" required="">
+                  <option value="" selected>Chọn tỉnh</option>
+                </select>
+
+                <select *ngIf="!loadingGetProvince" class="form-control" name="cityId" required=""
+                        (change)="getCityById($event.target)">
+                  <option value="" selected>Chọn tỉnh</option>
+                  <option *ngFor="let listProvince of listProvince"
+                          value="{{listProvince.id}}">{{listProvince.name}}</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-5 mb-3">
+              <div class="col mb-3">
+                <label>Thành phố <span class="text-danger">(*)</span>:</label>
+                <br>
+                <br>
+                <select *ngIf="loadingGetCity" disabled class="form-control" formControlName="cityId" required="">
+                  <option value="" selected>Chọn thành phố</option>
+                </select>
+                <select *ngIf="!loadingGetCity" class="form-control" formControlName="cityId" required="">
+                  <option value="" selected>Chọn thành phố</option>
+                  <option [ngValue]="listCity.id" *ngFor="let listCity of listCity">{{listCity.name}}</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="row" style="margin-bottom: 20px;">
+            <div class="col-4"></div>
+            <button class="btn btn-danger btn-lg btn-block col-2 m-2" routerLink="/employee">Quay Lại</button>
+            <button class="btn btn-primary btn-lg btn-block col-2 m-2" type="submit">Lưu</button>
+            <div class="col-4"></div>
+          </div>
+        </div>
+
+      </form>
+    </div>
+  </div>
+
+</div>
+
+
+
+
+
+
+
+

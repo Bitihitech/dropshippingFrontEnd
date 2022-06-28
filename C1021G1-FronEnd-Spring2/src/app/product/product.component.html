@@ -1,0 +1,56 @@
+<div class="container">
+  <div align="center">
+    <h1>List Product</h1>
+  </div>
+  <div class="d-flex justify-content-between">
+    <div>
+      <a routerLink="/create" data-bs-toggle="modal" data-bs-target="#exampleModal" style="margin-bottom: 10px" class="btn btn-primary"
+         href="#">Create new Product</a>
+    </div>
+    <div class=" d-flex ">
+      <input class="form-control mr-sm-4" type="search" placeholder="Search by name" aria-label="Search">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search by address" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-8" type="submit"><i class="fas fa-search"></i></button>
+    </div>
+  </div>
+  <table class="table table-striped">
+    <thead class="text-center">
+    <tr>
+      <th>STT</th>
+      <th>Name Product</th>
+      <th>Condition</th>
+      <th>Thumbnail</th>
+      <th>Created Date</th>
+      <th>Updated Date</th>
+      <th>Name Customer</th>
+      <th>Category</th>
+      <th colspan="2">Thao Tác</th>
+    </tr>
+
+
+    </thead>
+    <tbody class="text-center">
+    <tr *ngFor="let product of productList |paginate: { itemsPerPage: 5, currentPage: p}">
+      <td>{{product.id}}</td>
+      <td>{{product.name}}</td>
+      <td>{{product.condition}}</td>
+      <td>{{product.thumbnail}}</td>
+      <td>{{product.createdDate}}</td>
+      <td>{{product.updatedDate}}</td>
+      <td>{{product.profile.displayName}}</td>
+      <td>{{product.categoryList.name}}</td>
+      <td>
+        <a role="button"><span
+          class="fa fa-trash text-danger" style="font-size:24px" title="Xóa"></span></a>
+      </td>
+
+      <td>
+        <a role="button"><span class="fas fa-pencil" style="font-size:24px" title="Sửa"></span></a>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <div align="center">
+    <pagination-controls (pageChange)="p = $event" style="margin-left: 55%"></pagination-controls>
+  </div>
+</div>

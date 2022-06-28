@@ -1,0 +1,52 @@
+
+<div class="container">
+  <h1 align="center">List Product</h1>
+  <div class="d-flex justify-content-between">
+    <div>
+      <a data-bs-toggle="modal" data-bs-target="#exampleModal" style="margin-bottom: 10px" class="btn btn-primary"
+         href="#">Create new product</a>
+    </div>
+    <div class="form-inline">
+      <!--      <input class="form-control mr-sm-2" type="search" placeholder="Search by name" aria-label="Search"-->
+      <!--             #keyOne>-->
+      <!--      <input class="form-control mr-sm-2" type="search" placeholder="Search by price" aria-label="Search"-->
+      <!--             #keyTwo>-->
+      <!--      <input class="form-control mr-sm-2" type="search" placeholder="Search by color" aria-label="Search"-->
+      <!--             #keyThree>-->
+      <!--      <select (change)="changName($event)" class="form-control mr-sm-2">-->
+      <!--        <option value="">&#45;&#45;Catagory&#45;&#45;</option>-->
+      <!--        <option *ngFor="let category of categoryList" value="{{category.name}}">{{category.name}}-->
+      <!--        </option>-->
+      <!--      </select>-->
+      <!--      <button class="btn btn-outline-success my-2 my-sm-8" type="submit"-->
+      <!--              (click)="searchByName(keyOne.value,keyTwo.value,keyThree.value)">-->
+      <!--        <i class="fas fa-search"></i>-->
+      <!--      </button>-->
+    </div>
+  </div>
+  <table class="table table-striped">
+    <thead class="text-center">
+    <th>Id</th>
+    <th>Name</th>
+
+    </thead>
+    <tbody class="text-center">
+    <tr *ngFor="let items of mySentences">
+      <td>{{items.id}}</td>
+      <td>{{items.text}}</td>
+
+      <td>
+        <a class="btn btn-danger" data-toggle="modal" data-target="#modalDelete"><i class="material-icons" style="font-size:24px">delete</i></a>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+</div>
+<div align="center">
+<!--  <pagination-controls (pageChange)="p = $event" style="margin-left: 55%"></pagination-controls>-->
+</div>
+
+
+
+
