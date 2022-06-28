@@ -5,8 +5,6 @@ import { AppComponent } from './app.component';
 import {FooterComponent} from './layout/footer/footer.component';
 import {BodyComponent} from './layout/body/body.component';
 import {HeaderComponent} from './layout/header/header.component';
-import {SignInComponent} from './login/sign-in/sign-in.component';
-import {SignUpComponent} from './login/sign-up/sign-up.component';
 import {SidebarComponent} from './layout/sidebar/sidebar.component';
 import {HttpClientModule} from '@angular/common/http';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -32,8 +30,6 @@ import { ListProductComponent } from './product/list-product/list-product.compon
     FooterComponent,
     BodyComponent,
     HeaderComponent,
-    SignInComponent,
-    SignUpComponent,
     SidebarComponent,
     ProductComponent,
     CreateProductComponent,

@@ -1,14 +1,14 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {FormControl, FormGroup} from "@angular/forms";
-import {Category} from "../../car/model/category";
-import {City} from "../../car/model/city";
-import {CarService} from "../../car/car.service";
-import {Nationality} from "../../car/model/nationality";
-import {Province} from "../../car/model/province";
+import {CarService} from "../car.service";
 import {Router} from "@angular/router";
 import {finalize} from "rxjs/operators";
 import {AngularFireStorage} from "@angular/fire/storage";
 import {log} from "util";
+import {Category} from "../model/category";
+import {Province} from "../model/province";
+import {Nationality} from "../model/nationality";
+import {City} from "../model/city";
 
 @Component({
   selector: 'app-create-product',

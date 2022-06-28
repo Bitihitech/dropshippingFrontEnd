@@ -1,8 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import {BodyComponent} from "./layout/body/body.component";
-import {ListCarComponent} from "./car/list-car/list-car.component";
-import {CreateCarComponent} from "./car/create-car/create-car.component";
 import {ProductComponent} from "./product/product.component";
 import {CreateProductComponent} from "./product/create-product/create-product.component";
 import {CategoryComponent} from "./product/category/category.component";
