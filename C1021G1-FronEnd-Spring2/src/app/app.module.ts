@@ -1,7 +1,7 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
+import {AppRoutingModule} from './app-routing.module';
+import {AppComponent} from './app.component';
 import {FooterComponent} from './layout/footer/footer.component';
 import {BodyComponent} from './layout/body/body.component';
 import {HeaderComponent} from './layout/header/header.component';
@@ -17,12 +17,13 @@ import {DragDropModule} from '@angular/cdk/drag-drop';
 import {CdkTableModule} from '@angular/cdk/table';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {CommonModule} from "@angular/common";
-import { ProductComponent } from './product/product.component';
-import { CreateProductComponent } from './product/create-product/create-product.component';
+import {ProductComponent} from './product/product.component';
+import {CreateProductComponent} from './product/create-product/create-product.component';
 import {AngularFireModule} from "@angular/fire";
 import {environment} from "../environments/environment";
-import { CategoryComponent } from './product/category/category.component';
-import { ListProductComponent } from './product/list-product/list-product.component';
+import {CategoryComponent} from './product/category/category.component';
+import {ListProductComponent} from './product/list-product/list-product.component';
+import {LoginModule} from "./login/login.module";
 
 @NgModule({
   declarations: [
@@ -52,9 +53,11 @@ import { ListProductComponent } from './product/list-product/list-product.compon
     CdkTableModule,
     CommonModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
+    LoginModule
 
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
