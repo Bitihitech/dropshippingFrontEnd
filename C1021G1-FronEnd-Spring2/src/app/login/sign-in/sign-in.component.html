@@ -1,0 +1,72 @@
+<form (ngSubmit)="signIn()" [formGroup]="signInForm">
+
+  <div class="container ">
+    <div class="row">
+      <div class="col-12 m-auto background">
+        <div class="d-flex justify-content-center">
+
+          <h1 class="mb-3">Sign In</h1>
+          <!--                <button style="background: transparent; border: none; padding: 0px"><i class="material-icons" style="font-size:36px;color:red">cancel</i></button>-->
+        </div>
+        <div class="mb-3">
+          <label class="required">User Name<span class="text-danger">(*)</span>:</label>
+          <div class="input-group">
+            <input type="text" formControlName="userName" class="form-control" placeholder="Enter your user name!"><br>
+          </div>
+          <div class="form-text text-danger alert alert-danger" *ngIf="errorUserName">
+            Your username is not existing!
+          </div>
+          <div class="form-text text-danger alert alert-danger" *ngIf="(userName.errors?.required && userName.touched)">
+            Your username must not be blank!
+          </div>
+          <!--          <div class="form-text text-danger alert alert-danger" *ngIf="(userName.errors?.required && userName.touched)">-->
+          <!--            Your username must not be blank!-->
+          <!--          </div>-->
+          <!--          <p style="color: red"-->
+          <!--             *ngIf="emailNotExist &&!userForm.get('email').errors?.email &&userForm.get('email').value.length>0">Email-->
+          <!--            không tồn tại.</p>-->
+          <!--          <p style="color: red" *ngIf="userForm.get('email').errors?.email||checkEmail">Trường này phải có định dạng Email.</p>-->
+        </div>
+        <div class="mb-3">
+          <label class="required">Pass word <span class="text-danger">(*)</span>:</label>
+          <div class="input-group">
+            <input type="password" formControlName="password" class="form-control" placeholder="Enter your pass word">
+          </div>
+          <div class="form-text text-danger alert alert-danger" *ngIf="errorPassword">
+            Wrong pass word!
+          </div>
+          <div class="form-text text-danger alert alert-danger" *ngIf="(password.errors?.required && password.touched)">
+            Your username must not be blank!
+          </div>
+          <!--          <div class="form-text text-danger alert alert-danger" *ngIf="(password.errors?.required && password.touched)">-->
+          <!--            Your username must not be blank!-->
+          <!--          </div>-->
+          <!--          <div *ngIf="checkPassword" style="color: red">-->
+          <!--            Mật khẩu chưa đúng.-->
+          <!--          </div>-->
+        </div>
+        <hr class="mb-4">
+        <div class="mb-3 d-flex justify-content-between">
+          <div class="form-group form-check">
+            <label class="form-check-label">
+              <input class="form-check-input" #rememberE value="remember" name="remember" type="checkbox">Remember me!
+            </label>
+          </div>
+          <!--          <div>-->
+          <!--            <button style="color: blue; background: transparent;padding: 0px; border: none" (click)="openDialog()">Quên mật khẩu.</button>-->
+          <!--          </div>-->
+        </div>
+        <hr class="mb-4">
+        <div class="col-12  px-2 ">
+          <div class="d-flex justify-content-center px-5">
+            <button class="btn btn-danger p-2 m-2" mat-dialog-close>Cancel</button>
+            <button  class="btn btn-primary p-2 m-2" >SignIn</button>
+          </div>
+        </div>
+        <hr class="mb-4">
+
+      </div>
+
+    </div>
+  </div>
+</form>
