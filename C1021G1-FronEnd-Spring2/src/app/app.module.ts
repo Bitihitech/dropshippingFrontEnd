@@ -24,6 +24,7 @@ import {environment} from "../environments/environment";
 import {CategoryComponent} from './product/category/category.component';
 import {ListProductComponent} from './product/list-product/list-product.component';
 import {LoginModule} from "./login/login.module";
+import {ToastrModule} from "ngx-toastr";
 
 @NgModule({
   declarations: [
@@ -39,6 +40,8 @@ import {LoginModule} from "./login/login.module";
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(),
     FormsModule,
     ReactiveFormsModule,
     AppRoutingModule,

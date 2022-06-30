@@ -4,6 +4,9 @@ import {SignIn} from "./model/sign-in";
 import {LoginService} from "../login.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {Router} from "@angular/router";
+import {ToastrService} from "ngx-toastr";
+import {TokenStorageService} from "../token-storage.service";
+import {ShareService} from "../../common/service/share.service";
 
 @Component({
   selector: 'app-sign-in',
@@ -24,6 +27,9 @@ export class SignInComponent implements OnInit {
 
   constructor(private loginService: LoginService,
               private snackBar: MatSnackBar,
+              private toastrService:ToastrService,
+              private tokenStorageService:TokenStorageService,
+              private shareService:ShareService,
               private router: Router) {
   }
 
@@ -33,27 +39,38 @@ export class SignInComponent implements OnInit {
       password: new FormControl('', Validators.required),
       rememberMe: new FormControl('')
     })
+    if (this.tokenStorageService.getToken()){
+      this.loginService.isLoggedIn = true;
+    }
+
   }
 
   signIn() {
 
     this.singInDto = this.signInForm.value;
+    console.log("remember me: ")
+    console.log(this.rememberMe.value)
+
     this.loginService.sigIn(this.singInDto).subscribe(value => {
-      console.log(value)
-      console.log("SignIn success!")
-      this.snackBar.open("SignIin success", "Oke");
-
+     if (this.rememberMe.value){
+       this.tokenStorageService.saveTokenLocal(value.token);
+       this.tokenStorageService.saveUserLocal(value)
+     }else {
+       this.tokenStorageService.saveTokenSession(value.token);
+       this.tokenStorageService.saveUserSession(value);
+     }
+     this.loginService.isLoggedIn = true;
+      this.toastrService.success("Login succsess!","Continue!",{
+        timeOut:3000,
+        positionClass:'toast-top-right',
+      });
+      this.shareService.sendClickEvent();
       this.router.navigateByUrl("/home");
-      sessionStorage.setItem("token",value.token)
-      sessionStorage.setItem("username",value.name)
-      sessionStorage.setItem("roles",value.authorities)
-
-      localStorage.setItem("token",value.token);
-
-
-      const token = localStorage.getItem("token");
-      console.log(token);
     }, error => {
+      this.toastrService.error("Error","Try again!",{
+        timeOut:3000,
+        positionClass:'toast-bottom-right',
+      })
       console.log(error);
 
       // if ((typeof error.error.details.password) == 'string') {
@@ -86,7 +103,7 @@ export class SignInComponent implements OnInit {
       }
 
     }, () => {
-      console.log("Complete!")
+      console.log("SignIn Complete!")
     })
   }
 
@@ -95,5 +112,9 @@ export class SignInComponent implements OnInit {
   }
   get password(){
     return this.signInForm.get('password');
+  }
+
+  get rememberMe(){
+    return this.signInForm.get('rememberMe');
   }
 }
