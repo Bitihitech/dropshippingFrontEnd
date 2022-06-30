@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {type} from "../car/model/type";
 import {CarService} from "./car.service";
+import {MatDialog} from "@angular/material/dialog";
+import {MatSnackBar} from "@angular/material/snack-bar";
+import {ListProductSimilarComponent} from "./list-product-similar/list-product-similar.component";
 
 @Component({
   selector: 'app-product',
@@ -18,12 +20,12 @@ export class ProductComponent implements OnInit {
 
   constructor(
     private carService: CarService,
+    private snackBar: MatSnackBar
 
   ) { }
 
   ngOnInit(): void {
     this.carService.getAllProduct().subscribe(data => {
-      console.log(data)
 
 
       this.productList = data
@@ -36,4 +38,5 @@ export class ProductComponent implements OnInit {
   save() {
 
   }
+
 }

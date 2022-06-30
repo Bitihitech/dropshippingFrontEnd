@@ -1,11 +1,10 @@
 <div class="container">
   <div align="center">
-    <h1>List Product</h1>
+    <h1>List Product Similar</h1>
   </div>
   <div class="d-flex justify-content-between">
     <div>
-      <a routerLink="/create" data-bs-toggle="modal" data-bs-target="#exampleModal" style="margin-bottom: 10px" class="btn btn-primary"
-         href="#">Create new Product</a>
+
     </div>
     <div class=" d-flex ">
       <input class="form-control mr-sm-4" type="search" placeholder="Search by name" aria-label="Search">
@@ -24,21 +23,23 @@
       <th>Updated Date</th>
       <th>Name Customer</th>
       <th>Category</th>
+      <th>Profile</th>
       <th colspan="2">Thao Tác</th>
     </tr>
 
 
     </thead>
     <tbody class="text-center">
-    <tr *ngFor="let product of productList |paginate: { itemsPerPage: 5, currentPage: p}">
-      <td [routerLink]="['/similar', product.id]">{{product.id}}</td>
-      <td>{{product.name}}</td>
-      <td>{{product.condition}}</td>
+    <tr *ngFor="let product of productLists |paginate: { itemsPerPage: 5, currentPage: p}">
+      <td>{{product.id}}</td>
+      <td>{{product.productName}}</td>
+      <td>{{product.productCondition}}</td>
       <td>{{product.thumbnail}}</td>
       <td>{{product.createdDate}}</td>
       <td>{{product.updatedDate}}</td>
-      <td>{{product.profile.displayName}}</td>
-      <td>{{product.categoryList.name}}</td>
+      <td>{{product.displayName}}</td>
+      <td>{{product.categoryName}}</td>
+      <td [routerLink]="['/profile', product.profileId]">{{product.profileId}}</td>
       <td>
         <a role="button"><span
           class="fa fa-trash text-danger" style="font-size:24px" title="Xóa"></span></a>

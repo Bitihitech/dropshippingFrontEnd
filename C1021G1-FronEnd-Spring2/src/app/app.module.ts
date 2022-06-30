@@ -23,6 +23,8 @@ import {AngularFireModule} from "@angular/fire";
 import {environment} from "../environments/environment";
 import { CategoryComponent } from './product/category/category.component';
 import { ListProductComponent } from './product/list-product/list-product.component';
+import { ListProductSimilarComponent } from './product/list-product-similar/list-product-similar.component';
+import { ProfileComponent } from './product/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +36,9 @@ import { ListProductComponent } from './product/list-product/list-product.compon
     ProductComponent,
     CreateProductComponent,
     CategoryComponent,
-    ListProductComponent
+    ListProductComponent,
+    ListProductSimilarComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,

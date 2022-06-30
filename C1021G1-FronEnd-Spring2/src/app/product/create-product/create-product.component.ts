@@ -4,11 +4,11 @@ import {CarService} from "../car.service";
 import {Router} from "@angular/router";
 import {finalize} from "rxjs/operators";
 import {AngularFireStorage} from "@angular/fire/storage";
-import {log} from "util";
 import {Category} from "../model/category";
 import {Province} from "../model/province";
 import {Nationality} from "../model/nationality";
 import {City} from "../model/city";
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Component({
   selector: 'app-create-product',
@@ -38,6 +38,7 @@ export class CreateProductComponent implements OnInit {
   constructor(
     private carService: CarService,
     private router: Router,
+    private snackBar: MatSnackBar,
     @Inject(AngularFireStorage) private storage: AngularFireStorage
   ) {
   }
@@ -52,10 +53,13 @@ export class CreateProductComponent implements OnInit {
       cityId: new FormControl(''),
       location: new FormControl(''),
       notice: new FormControl(''),
-      condition: new FormControl('')
+      condition: new FormControl(''),
+      thumbnail: new FormControl('')
     });
     this.carService.getAllCategory().subscribe(data => {
       console.log(this.listCategory)
+      this.listCategory = data;
+
     })
     this.carService.getAllnationality().subscribe(value => {
       this.listNationality = value;
@@ -64,9 +68,7 @@ export class CreateProductComponent implements OnInit {
 
   }
 
-  save() {
 
-  }
   idProvince: number =0
   getProvinceById(e) {
     this.idProvince = e.value
@@ -106,7 +108,7 @@ export class CreateProductComponent implements OnInit {
       // reader.readAsDataURL(event.target.files[0]);
   }
 
-  updateImage() {
+  save() {
     // upload image to firebase
     for (let i = 0; i <this.fileEvent.target.files.length; i++){
       const nameImg = this.fileEvent.target.files[i].name;
@@ -119,8 +121,12 @@ export class CreateProductComponent implements OnInit {
             this.loadImg = false;
             console.log('url la')
             this.urlFile = url;
-            console.log(url);
-            this.carService.save(url).subscribe(()=>{
+            console.log(url)
+            this.formValue.get('thumbnail').patchValue(url)
+            console.log(this.formValue.value)
+            this.carService.save(this.formValue.value).subscribe(data =>{
+              this.snackBar.open('Thêm mới thành công', 'OK')
+              console.log(data)
             })
           });
         })

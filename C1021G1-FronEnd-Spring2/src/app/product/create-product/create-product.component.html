@@ -1,31 +1,31 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-3 mt-5">
-      <div class="mb-3 mt-5" >
-        <h1 class="text-center" style=""></h1>
-      </div>
-      <div class="col-12 d-flex justify-content-around">
-        <div class="mb-3 mt-5">
-          <div>
-            <label class="label ">Upload sản phẩm <span class="text-danger">(*)</span>:</label>
-            <br>
-            <br>
-          </div>
-          <div *ngIf="checkImgIn != true">
-            <i class="fa-solid fa-champagne-glasses" style='font-size:150px'></i>
-          </div>
-          <div>
-            <img *ngIf="checkImgIn == true" style="width: 200px;height: 200px" alt="avatar" id="imageNews" [src]="imageThis">
-            <br><span *ngIf="loadImg" class="spinner-border" ></span>
-            <input value="a" style=" border: none; padding: 10px; border-radius: 3px" type="file" multiple = "multiple"
-                   class="form-control-file" (change)=" showPreview($event)">
-          </div>
+<!--      <div class="mb-3 mt-5" >-->
+<!--        <h1 class="text-center" style=""></h1>-->
+<!--      </div>-->
+<!--      <div class="col-12 d-flex justify-content-around">-->
+<!--        <div class="mb-3 mt-5">-->
+<!--          <div>-->
+<!--            <label class="label ">Upload sản phẩm <span class="text-danger">(*)</span>:</label>-->
+<!--            <br>-->
+<!--            <br>-->
+<!--          </div>-->
+<!--          <div *ngIf="checkImgIn != true">-->
+<!--            <i class="fa-solid fa-champagne-glasses" style='font-size:150px'></i>-->
+<!--          </div>-->
+<!--          <div>-->
+<!--            <img *ngIf="checkImgIn == true" style="width: 200px;height: 200px" alt="avatar" id="imageNews" [src]="imageThis">-->
+<!--            <br><span *ngIf="loadImg" class="spinner-border" ></span>-->
+<!--            <input value="a" style=" border: none; padding: 10px; border-radius: 3px" type="file" multiple = "multiple"-->
+<!--                   class="form-control-file" (change)=" showPreview($event)">-->
+<!--          </div>-->
 
-          <div>
-            <button class="coler"  style=" border: none; background: #71b7e6; color: white;padding: 10px; border-radius: 3px" type="button" (click)="updateImage()">Upload</button>
-          </div>
-        </div>
-      </div>
+<!--          <div>-->
+<!--            <button class="coler"  style=" border: none; background: #71b7e6; color: white;padding: 10px; border-radius: 3px" type="button" (click)="updateImage()">Upload</button>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
     </div>
     <div class="col-md-9 order-md-1">
       <div class="mb-3 mt-5" style="height:50px">
@@ -33,31 +33,31 @@
       </div>
       <form [formGroup]="formValue" (ngSubmit)="save()">
         <div class="container">
-<!--          <div class="col-12 d-flex justify-content-around">-->
-<!--            <div class="col-5 mb-3">-->
-<!--              <div>-->
-<!--                <label class="label mt-5">Upload sản phẩm <span class="text-danger">(*)</span>:</label>-->
-<!--                <br>-->
-<!--                <br>-->
-<!--              </div>-->
-<!--              <div *ngIf="checkImgIn != true">-->
-<!--                <i class="fa-solid fa-champagne-glasses" style='font-size:150px'></i>-->
-<!--              </div>-->
-<!--              <div>-->
-<!--                <img *ngIf="checkImgIn == true" style="width: 200px;height: 200px" alt="avatar" id="imageNews"-->
-<!--                     [src]="imageThis">-->
-<!--                <br><span *ngIf="loadImg" class="spinner-border" ></span>-->
-<!--                <input value="a" style=" border: none; padding: 10px; border-radius: 3px" type="file"-->
-<!--                       class="form-control-file" (change)=" showPreview($event)">-->
-<!--              </div>-->
+          <div class="col-12 d-flex justify-content-around">
+            <div class="col-5 mb-3">
+              <div>
+                <label class="label mt-5">Upload sản phẩm <span class="text-danger">(*)</span>:</label>
+                <br>
+                <br>
+              </div>
+              <div *ngIf="checkImgIn != true">
+                <i class="fa-solid fa-champagne-glasses" style='font-size:150px'></i>
+              </div>
+              <div>
+                <img *ngIf="checkImgIn == true" style="width: 200px;height: 200px" alt="avatar" id="imageNews"
+                     [src]="imageThis">
+                <br><span *ngIf="loadImg" class="spinner-border" ></span>
+                <input value="a" style=" border: none; padding: 10px; border-radius: 3px" type="file" multiple = "multiple"
+                       class="form-control-file" (change)=" showPreview($event)">
+              </div>
 
 <!--              <div>-->
 <!--                <button class="coler"  style=" border: none; background: #71b7e6; color: white;padding: 10px; border-radius: 3px" type="button" (click)="updateImage()">Upload</button>-->
 <!--              </div>-->
-<!--            </div>-->
-<!--            <div class="col-5 mb-3">-->
-<!--            </div>-->
-<!--          </div>-->
+            </div>
+            <div class="col-5 mb-3">
+            </div>
+          </div>
 
           <div class="col-12 mt-5 d-flex justify-content-around">
             <div class="col-5 mb-3">
@@ -76,7 +76,12 @@
                 <br>
                 <br>
                 <div class="input-group">
-                  <input type="text" class="form-control" placeholder="Trạng thái" formControlName="status">
+<!--                  <input type="text" class="form-control" placeholder="Trạng thái" formControlName="status">-->
+                  <select class="form-control" name="status" formControlName="status" required="">
+                    <option value="" selected>Chọn trạng thái</option>
+                    <option value="SWAPPED" >SWAPPED</option>
+                    <option value="AVAILABLE" >AVAILABLE</option>
+                  </select>
                 </div>
               </div>
             </div>
@@ -113,7 +118,13 @@
                 <br>
                 <br>
                 <div class="input-group">
-                  <input type="text" class="form-control" placeholder="Điều kiện" formControlName="condition">
+<!--                  <input type="text" class="form-control" placeholder="Điều kiện" formControlName="condition">-->
+                  <select class="form-control" name="condition" formControlName="condition" required="">
+                    <option value="" selected>Chọn sản phẩm</option>
+                    <option value="NEW" >NEW</option>
+                    <option value="LIKENEW" >LIKENEW</option>
+                    <option value="USED" >USED</option>
+                  </select>
                 </div>
               </div>
             </div>

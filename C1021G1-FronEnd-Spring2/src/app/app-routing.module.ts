@@ -4,6 +4,8 @@ import {BodyComponent} from "./layout/body/body.component";
 import {ProductComponent} from "./product/product.component";
 import {CreateProductComponent} from "./product/create-product/create-product.component";
 import {CategoryComponent} from "./product/category/category.component";
+import {ListProductSimilarComponent} from "./product/list-product-similar/list-product-similar.component";
+import {ProfileComponent} from "./product/profile/profile.component";
 
 
 const routes: Routes = [
@@ -11,6 +13,8 @@ const routes: Routes = [
   {path:'home',component:BodyComponent},
   {path:'create',component:CreateProductComponent},
   {path:'product',component:ProductComponent},
+  {path:'similar/:id',component:ListProductSimilarComponent},
+  {path:'profile/:id',component:ProfileComponent},
   {path:'category',component:CategoryComponent},
 ];
 
