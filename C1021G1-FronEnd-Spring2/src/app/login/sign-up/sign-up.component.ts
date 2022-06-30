@@ -7,6 +7,7 @@ import {LoginService} from "../login.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {Router} from "@angular/router";
 import {MatDialogRef} from "@angular/material/dialog";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-sign-up',
@@ -33,7 +34,7 @@ export class SignUpComponent implements OnInit {
   nationalList: Nationality[];
 
   constructor(private userService: LoginService,
-              private snackBar: MatSnackBar,
+              private toast:ToastrService,
               private router: Router,
 
   ) {
@@ -80,13 +81,9 @@ export class SignUpComponent implements OnInit {
   }
 
   signUp() {
-    // console.log("signForm")
-    // console.log( this.signUpForm.value);
+    // console.log("user")
+    // console.log(this.userDto);
     // console.log("----------")
-    //
-    console.log("user")
-    console.log(this.userDto);
-    console.log("----------")
 
     this.userDto.userName = this.signUpForm.get("userName").value;
     this.userDto.firstName = this.signUpForm.get("firstName").value;
@@ -100,8 +97,17 @@ export class SignUpComponent implements OnInit {
 
     this.userService.register(this.userDto).subscribe(value => {
       console.log(value);
+      this.toast.warning("Create user successfully!","Success :",{
+        timeOut:3000,
+        positionClass:'toast-top-right',
+      })
     }, error => {
-      this.snackBar.open('Find error!', 'error')
+      this.toast.warning(
+        "Can't create user. Please try again!",
+        "Error:",{
+        timeOut:3000,
+        positionClass:'toast-bottom-right',
+      })
       if ((typeof error.error.details.error) == 'string') {
         let er = error?.error.details.error;
         this.phoneExist = er.includes('phone') ? true : false;
@@ -119,7 +125,6 @@ export class SignUpComponent implements OnInit {
       console.log("message" + error.message)
     }, () => {
       console.log("Create new User success!")
-      this.snackBar.open('Create new User success!', 'OK')
       this.router.navigateByUrl("/home")
     })
   }
