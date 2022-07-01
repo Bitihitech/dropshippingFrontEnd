@@ -25,6 +25,7 @@ import { CategoryComponent } from './product/category/category.component';
 import { ListProductComponent } from './product/list-product/list-product.component';
 import { ListProductSimilarComponent } from './product/list-product-similar/list-product-similar.component';
 import { ProfileComponent } from './product/profile/profile.component';
+import { EditProductComponent } from './product/edit-product/edit-product.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { ProfileComponent } from './product/profile/profile.component';
     CategoryComponent,
     ListProductComponent,
     ListProductSimilarComponent,
-    ProfileComponent
+    ProfileComponent,
+    EditProductComponent
   ],
   imports: [
     BrowserModule,

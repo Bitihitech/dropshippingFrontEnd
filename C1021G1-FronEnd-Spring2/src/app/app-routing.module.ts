@@ -6,6 +6,7 @@ import {CreateProductComponent} from "./product/create-product/create-product.co
 import {CategoryComponent} from "./product/category/category.component";
 import {ListProductSimilarComponent} from "./product/list-product-similar/list-product-similar.component";
 import {ProfileComponent} from "./product/profile/profile.component";
+import {EditProductComponent} from "./product/edit-product/edit-product.component";
 
 
 const routes: Routes = [
@@ -16,6 +17,9 @@ const routes: Routes = [
   {path:'similar/:id',component:ListProductSimilarComponent},
   {path:'profile/:id',component:ProfileComponent},
   {path:'category',component:CategoryComponent},
+  {
+    path : 'update/:id', component: EditProductComponent
+  }
 ];
 
 @NgModule({
