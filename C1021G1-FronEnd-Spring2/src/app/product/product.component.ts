@@ -30,7 +30,7 @@ export class ProductComponent implements OnInit {
 
       this.productList = data
 
-      // console.log(this.productList)
+      console.log(this.productList)
 
     })
   }

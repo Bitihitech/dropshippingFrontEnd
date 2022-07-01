@@ -104,4 +104,13 @@ export class CarService {
     };
     return this.httpClient.get(this.URL4 + '/' + id, {headers: header});
   }
+
+  findById(id: number) {
+    const token = sessionStorage.getItem('token');
+    const header = {
+      'content-type': 'application/json',
+      'Authorization': `Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJuaGF0aGlldTEiLCJpYXQiOjE2NTYzMTMyODAsImV4cCI6MTY1Njc0NTI4MH0.VOKCsRAD8WxHJWymTP9YGEVSbL8im7-Bt1_Tad636AEI1pDWXRFp4FnqR3U82Tnt4YVpMYO4TQduuCXm3I-L_w`
+    };
+    return this.httpClient.get(this.URL + '/' + id,{headers: header})
+  }
 }

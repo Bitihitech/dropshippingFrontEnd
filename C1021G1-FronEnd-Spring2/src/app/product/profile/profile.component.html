@@ -1,37 +1,63 @@
-<div class="container">
-  <div align="center">
-    <h1>Profile</h1>
+
+
+<!--<div class="container">-->
+<!--  <div align="center">-->
+<!--    <h1>Profile</h1>-->
+<!--  </div>-->
+
+<!--  <table class="table table-striped">-->
+<!--    <thead class="text-center">-->
+<!--    <tr>-->
+<!--      <th>STT</th>-->
+<!--      <th>Name</th>-->
+<!--      <th>Avatar</th>-->
+<!--      <th colspan="2">Thao Tác</th>-->
+<!--    </tr>-->
+
+
+<!--    </thead>-->
+<!--    <tbody class="text-center">-->
+<!--&lt;!&ndash;    <tr *ngFor="let profile of profileList |paginate: { itemsPerPage: 5, currentPage: p}">&ndash;&gt;-->
+<!--      <tr>-->
+<!--      <td>{{profileList.id}}</td>-->
+<!--      <td>{{profileList.displayName}}</td>-->
+<!--      <td>{{profileList.avatar}}</td>-->
+
+<!--      <td>-->
+<!--        <a role="button"><span-->
+<!--          class="fa fa-trash text-danger" style="font-size:24px" title="Xóa"></span></a>-->
+<!--      </td>-->
+
+<!--      <td>-->
+<!--        <a role="button"><span class="fas fa-pencil" style="font-size:24px" title="Sửa"></span></a>-->
+<!--      </td>-->
+<!--    </tr>-->
+<!--    </tbody>-->
+<!--  </table>-->
+<!--  <img [src]="profileList.avatar" alt="" height="200px">-->
+
+<!--</div>-->
+
+<div class = "container">
+  <div class="row" >
+    <div class="mb-5" style="height:50px">
+      <h1 class="text-center" style=" padding-top: 12px;">Profile</h1>
+    </div>
+    <div align="center">
+      <div style="width: 392px; height: 420px" class="card ">
+        <img style="width: 390px; height: 3900px" class="card-img-top" [src]="profileList.avatar" alt="" >
+
+        <div class="card-body">
+          <h3 >{{profileList.displayName | titlecase}}</h3>
+          <br>
+          <div class="d-flex justify-content-between">
+            <a class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter"><i class='far fa-address-card' style='font-size:24px'></i></a>
+            <a class="btn btn-warning" data-toggle="modal" data-target="#exampleModalCenter"><i class='fas fa-edit' style='font-size:24px'></i></a>
+            <a class="btn btn-danger" data-toggle="modal" data-target="#modalDelete" ><i class="fas fa-trash" style="font-size:24px"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 
-  <table class="table table-striped">
-    <thead class="text-center">
-    <tr>
-      <th>STT</th>
-      <th>Name</th>
-      <th>Avatar</th>
-      <th colspan="2">Thao Tác</th>
-    </tr>
-
-
-    </thead>
-    <tbody class="text-center">
-<!--    <tr *ngFor="let profile of profileList |paginate: { itemsPerPage: 5, currentPage: p}">-->
-      <tr>
-      <td>{{profileList.id}}</td>
-      <td>{{profileList.displayName}}</td>
-      <td>{{profileList.avatar}}</td>
-      <td>
-        <a role="button"><span
-          class="fa fa-trash text-danger" style="font-size:24px" title="Xóa"></span></a>
-      </td>
-
-      <td>
-        <a role="button"><span class="fas fa-pencil" style="font-size:24px" title="Sửa"></span></a>
-      </td>
-    </tr>
-    </tbody>
-  </table>
-<!--  <div align="center">-->
-<!--    <pagination-controls (pageChange)="p = $event" style="margin-left: 55%"></pagination-controls>-->
-<!--  </div>-->
 </div>
